@@ -1,12 +1,16 @@
+//Dependencies
 import Link from 'next/link';
+
+//Components
+import Header from '../components/Header';
+import Layout from '../components/MyLayout';
 
 export default function Index() {
     return (
         <div>
-            <Link href="/about">
-                <a title="About Page">About Page</a>
-            </Link>
-            <p>Hello Next</p>
+            <Layout>
+                <p>Hello Next</p>
+            </Layout>
         </div>
     );
 }

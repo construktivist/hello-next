@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch';
 import Layout from '../components/MyLayout';
 
 // ======== FETCHING DATA FOR PAGES =========
-//
+
 const Index = props => (
     <Layout>
         <h1>Batman TV Shows</h1>
@@ -21,6 +21,19 @@ const Index = props => (
         </ul>
     </Layout>
 )
+
+Index.getInitialProps = async function() {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const data = await res.json();
+
+    console.log(`Show data fetched. Count: ${data.length}`);
+
+    return {
+        shows: data.map(entry => entry.show)
+    };
+}
+
+export default Index;
 
 // ======== LINKS WITH DYNAMIC ROUTING =========
 //
